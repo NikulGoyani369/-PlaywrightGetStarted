@@ -210,7 +210,10 @@ test.describe('Editing', () => {
   test('should save edits on blur', async ({ page }) => {
     const todoItems = page.getByTestId('todo-item');
     await todoItems.nth(1).dblclick();
-    await todoItems.nth(1).getByRole('textbox', { name: 'Edit' }).fill('buy some cheess');
+    await todoItems
+      .nth(1)
+      .getByRole('textbox', { name: 'Edit' })
+      .fill('buy some sausages');
     await todoItems.nth(1).getByRole('textbox', { name: 'Edit' }).dispatchEvent('blur');
 
     await expect(todoItems).toHaveText([
